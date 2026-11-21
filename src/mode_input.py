@@ -33,9 +33,6 @@ def input_matrix(rows, colums, min_val, max_val):
     return matrix
 
 def mode_input():
-    filter_A = []
-    filter_B = []
-    target = []
     print("\n== 필터 A ==\n")
     filter_A = input_matrix(3, 3, 0, 1)
     if filter_A is None: return
@@ -43,18 +40,19 @@ def mode_input():
     filter_B = input_matrix(3, 3, 0, 1)
     if filter_A is None: return
     print("\n=== 타겟 ===\n")
-    target = input_matrix(3, 3, 0, 1)
+    pattern = input_matrix(3, 3, 0, 1)
     if filter_A is None: return
     
-    compar_A = mac(filter_A, target)
-    compar_B = mac(filter_B, target)
+    compar_A = mac(filter_A, pattern)
+    compar_B = mac(filter_B, pattern)
     same = compar(compar_A, compar_B)
 
     if same:
         print(f"\nA: {compar_A}\nB: {compar_B}\n패턴과 필터 A, B와의 일치도가 사실상 동일합니다.\n")
+        print(f"성능 분석(3x3): {get_perf(pattern, filter_A)*1000}ms")
     elif compar_A > compar_B:
         print(f"\nA: {compar_A}\nB: {compar_B}\nA패턴과 더 유사합니다.\n")
+        print(f"성능 분석(3x3): {get_perf(pattern, filter_B)*1000}ms")
     elif compar_A < compar_B:
         print(f"\nA: {compar_A}\nB: {compar_B}\nB패턴과 더 유사합니다.")
-
-    print(f"성능 분석(3x3): {get_perf(3)*1000}ms")
+        print(f"성능 분석(3x3): {get_perf(pattern, filter_A)*1000}ms")
