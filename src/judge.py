@@ -19,3 +19,7 @@ def normalize(raw: dict, map: dict):
         result[final_key] = final_value
 
     return result
+
+def judge_Cross_X(a: list[list[int]], b: list[list[int]]):
+    if not len(a) == len(b) and len(a[0]) == len(b[0]):
+        raise 

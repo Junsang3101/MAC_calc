@@ -48,7 +48,6 @@ def mode_json(path: Path | str = None):
     filter_13 = normalize(filter_13, normalize_map)
     filter_25 = normalize(filter_25, normalize_map)
     print("필터를 성공적으로 정규화했습니다.")
-
     for idx in range(len(patterns)):
         patterns[idx] = normalize(patterns[idx], normalize_map)
     print("패턴을 성공적으로 정규화했습니다.")
