@@ -39,7 +39,7 @@ def mode_input():
     print("\n== 필터 B ==\n")
     filter_B = input_matrix(3, 3, 0, 1)
     if filter_A is None: return
-    print("\n=== 타겟 ===\n")
+    print("\n=== 패턴 ===\n")
     pattern = input_matrix(3, 3, 0, 1)
     if filter_A is None: return
     
@@ -55,4 +55,4 @@ def mode_input():
         print(f"성능 분석(3x3): {get_perf(pattern, filter_B)*1000}ms")
     elif compar_A < compar_B:
         print(f"\nA: {compar_A}\nB: {compar_B}\nB패턴과 더 유사합니다.")
-        print(f"성능 분석(3x3): {get_perf(pattern, filter_A)*1000}ms")
+        print(f"성능 분석: {get_perf(pattern, filter_A)*1000}ms")

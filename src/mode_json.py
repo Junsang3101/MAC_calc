@@ -25,14 +25,4 @@ def mode_json(path: Path | str = None):
     except (KeyError, ValueError):
         print(f"필터를 불러오기에 실패했습니다. {filepath}를 확인해주세요.")
 
-    try:
-        pattern_5 = data["patterns"]["size_5_1"]
-        #pattern_5.append(data["patterns"]["size_5_2"])
-        pattern_13 = data["patterns"]["size_13_1"]
-        #pattern_13.append(data["patterns"]["size_13_2"])
-        pattern_25 = data["patterns"]["size_5_1"]
-        #pattern_25.append(data["patterns"]["size_25_2"])
-    except (KeyError, ValueError):
-        print(f"패턴을 불러오기에 실패했습니다. {filepath}를 확인해주세요.")
-    print(pattern_5, pattern_13, pattern_25)
     
