@@ -1,3 +1,7 @@
+import time
+from .mac import mac
+from .perf import get_perf
+
 EPSILON = 1e-9
 
 def compar(A: float | int, B: float | int, epsilon: float = EPSILON):
@@ -20,6 +24,23 @@ def normalize(raw: dict, map: dict):
 
     return result
 
-def judge_Cross_X(a: list[list[int]], b: list[list[int]]):
-    if not len(a) == len(b) and len(a[0]) == len(b[0]):
-        raise 
+def judge(filter, pattern: list[list[int]]) -> dict:
+    a = mac(pattern["input"], filter["Cross"])
+    b = mac(pattern["input"], filter["X"])
+
+    perf = get_perf(filter["X"], pattern["input"], 1) + get_perf(filter["Cross"], pattern["input"], 1) / 2
+    result = {
+        "Cross": a,
+        "X": b,
+        "perf": perf
+    }
+
+    #print(result)
+    return result
+
+    if compar(a, b):
+        return None
+    elif a > b:
+        return "Cross"
+    elif a < b:
+        return "X"

@@ -48,11 +48,12 @@ def mode_input():
     same = compar(compar_A, compar_B)
 
     if same:
-        print(f"\nA: {compar_A}\nB: {compar_B}\n패턴과 필터 A, B와의 일치도가 사실상 동일합니다.\n")
+        print(f"\nA: {compar_A}%\nB: {compar_B}%\n패턴과 필터 A, B와의 일치도가 사실상 동일합니다.\n")
         print(f"성능 분석(3x3): {get_perf(pattern, filter_A)*1000}ms")
     elif compar_A > compar_B:
-        print(f"\nA: {compar_A}\nB: {compar_B}\nA패턴과 더 유사합니다.\n")
+        print(f"\nA: {compar_A}%\nB: {compar_B}%\nA패턴과 더 유사합니다.\n")
         print(f"성능 분석(3x3): {get_perf(pattern, filter_B)*1000}ms")
     elif compar_A < compar_B:
-        print(f"\nA: {compar_A}\nB: {compar_B}\nB패턴과 더 유사합니다.")
+        print(f"\nA: {compar_A}%\nB: {compar_B}%\nB패턴과 더 유사합니다.")
         print(f"성능 분석: {get_perf(pattern, filter_A)*1000}ms")
+        print(f"연산 횟수: {3**2}")

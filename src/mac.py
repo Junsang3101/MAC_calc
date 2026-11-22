@@ -3,7 +3,7 @@ def mac(data: list[list[int]], filter: list[list[int]]):
         raise ValueError("x패턴 행렬이 비어있습니다.")
     elif not filter:
         raise ValueError("필터 행렬이 비어있습니다.")
-
+    
     data_rows, data_cols = len(data), len(data[0])
     filter_rows, filter_cols = len(data), len(data[0])
  

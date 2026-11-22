@@ -1,5 +1,6 @@
 from src.mode_input import mode_input
 from src.mode_json import mode_json
+from src.mode_perf import mode_perf
 
 def main():
     # 메뉴 선택
@@ -8,6 +9,7 @@ def main():
         print("\n== 메뉴 ==\n")
         print("1. 사용자 입력")
         print("2. json 분석")
+        print("3. 크기별 성능 분석")
         print("4. 종료")
 
         choice = 0
@@ -28,7 +30,7 @@ def main():
         elif choice == 2:
             mode_json()
         elif choice == 3:
-            pass
+            mode_perf()
         elif choice == 4:
             print("정상 종료되었습니다.")
             return
