@@ -1,6 +1,6 @@
 from pathlib import Path
 import json
-from .judge import normalize, judge, compar
+from .judge import normalize_label, judge, compar
 
 def load_json(filepath: Path | str = None):
 
@@ -66,12 +66,12 @@ def mode_json(path: Path | str = None):
         'cross': 'Cross'
     }
 
-    filter_5 = normalize(filter_5, normalize_map)
-    filter_13 = normalize(filter_13, normalize_map)
-    filter_25 = normalize(filter_25, normalize_map)
+    filter_5 = normalize_label(filter_5, normalize_map)
+    filter_13 = normalize_label(filter_13, normalize_map)
+    filter_25 = normalize_label(filter_25, normalize_map)
     print("필터를 성공적으로 정규화했습니다.")
     for idx in range(len(patterns)):
-        patterns[idx] = normalize(patterns[idx], normalize_map)
+        patterns[idx] = normalize_label(patterns[idx], normalize_map)
     print("패턴을 성공적으로 정규화했습니다.")
 
     result = {
