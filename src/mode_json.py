@@ -15,7 +15,7 @@ def load_json(filepath: Path | str = None):
 def run_case(pattern, filter):
     temp = judge(filter, pattern)
     same = compar(temp["Cross"], temp["X"])
-    compute = len(pattern["input"]) ** 2
+    compute = len(pattern["Input"]) ** 2
     print(f"Cross 점수: {temp['Cross']}\nX 점수: {temp['X']}")
     if same:
         print(f"결과: 판정불가(UNDECIDED)")
@@ -89,10 +89,10 @@ def mode_json(path: Path | str = None):
 
     for idx in range(len(patterns)):
         # 필터 크기에 해당하는 패턴이 맞는가
-        print(f"== {len(patterns[idx]['input'])} x {len(patterns[idx]['input'][0])} ==")
+        print(f"== {len(patterns[idx]['Input'])} x {len(patterns[idx]['Input'][0])} ==")
 
         temp = None
-        p_size = len(patterns[idx]['input']) * len(patterns[idx]['input'][0])
+        p_size = len(patterns[idx]['Input']) * len(patterns[idx]['Input'][0])
         if p_size == 5**2:
             temp = run_case(patterns[idx], filter_5)
             if not temp == "PASS":

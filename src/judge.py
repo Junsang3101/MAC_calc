@@ -11,29 +11,26 @@ def normalize_label(raw: dict, map: dict):
     result = {}
     for key, value in raw.items():
         base_key = str(key).strip().lower()
-        final_key = base_key
-        final_value = value
-        for target, replacement in map.items():
-            if base_key == target:
-                final_key = replacement
+        final_key = base_key[:1].upper() + base_key[1:]
 
-            if isinstance(value, str) and value == target:
-                final_value = replacement
-
-        result[final_key] = final_value
+        base_value = value
+        final_value = base_value
+        if isinstance(base_value, str):
+            final_value = base_value[:1].upper() + base_value[1:]
+        result[final_key]=final_value
 
     return result
 
 def judge(filter, pattern: list[list[int]]) -> dict:
-    a = mac(pattern["input"], filter["Cross"])
-    b = mac(pattern["input"], filter["X"])
+    a = mac(pattern["Input"], filter["Cross"])
+    b = mac(pattern["Input"], filter["X"])
 
-    perf = get_perf(filter["X"], pattern["input"], 1) + get_perf(filter["Cross"], pattern["input"], 1) / 2
+    perf = get_perf(filter["X"], pattern["Input"], 1) + get_perf(filter["Cross"], pattern["Input"], 1) / 2
     result = {
         "Cross": a,
         "X": b,
         "perf": perf,
-        "size": len(pattern["input"])
+        "size": len(pattern["Input"])
     }
 
     #print(result)
