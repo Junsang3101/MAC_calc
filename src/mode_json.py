@@ -126,7 +126,7 @@ def mode_json(path: Path | str = None):
         else:
             result["Fails"].append({
                 "index": idx,
-                "reason": "SizeMismatch"
+                "reason": "SIZE_MISMATCH"
             })
             print(f"{p_size}")
             print(f"{idx+1}번 패턴 작업 실패. (SizeMismatch)")
