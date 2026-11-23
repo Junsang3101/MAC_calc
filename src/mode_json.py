@@ -18,19 +18,19 @@ def run_case(pattern, filter):
     compute = len(pattern["input"]) ** 2
     print("\n== 개별 테스트 결과 ==\n")
     if same:
-        print(f"Cross: {temp["Cross"]}\nX: {temp['X']}")
+        print(f"Cross: {temp['Cross']}\nX: {temp['X']}")
         print(f"Cross 와 X의 일치도가 사실상 동일합니다.")
-        print(f"계산 시간: {temp["perf"]* 1000}ms")
+        print(f"계산 시간: {temp['perf']* 1000}ms")
         print(f"연산 횟수 {compute}")
     elif temp["Cross"] > temp["X"]:
-        print(f"Cross: {temp["Cross"]}\nX: {temp['X']}")
+        print(f"Cross: {temp['Cross']}\nX: {temp['X']}")
         print(f"검사 결과: Cross")
-        print(f"계산 시간: {temp["perf"]* 1000}ms")
+        print(f"계산 시간: {temp['perf']* 1000}ms")
         print(f"연산 횟수 {compute}")
     elif temp["Cross"] < temp["X"]:
-        print(f"Cross: {temp["Cross"]}\nX: {temp['X']}")
+        print(f"Cross: {temp['Cross']}\nX: {temp['X']}")
         print(f"검사 결과: X")
-        print(f"계산 시간: {temp["perf"]* 1000}ms")
+        print(f"계산 시간: {temp['perf']* 1000}ms")
         print(f"연산 횟수 {compute}")
     print("\n======================\n")
 
@@ -83,9 +83,9 @@ def mode_json(path: Path | str = None):
     print()
     for idx in range(len(patterns)):
         # 필터 크기에 해당하는 패턴이 맞는가
-        print(f"{len(patterns[idx]["input"])} x {len(patterns[idx]["input"][0])} 크기의 패턴 검사")
+        print(f"{len(patterns[idx]['input'])} x {len(patterns[idx]['input'][0])} 크기의 패턴 검사")
 
-        p_size = len(patterns[idx]["input"]) * len(patterns[idx]["input"][0])
+        p_size = len(patterns[idx]['input']) * len(patterns[idx]['input'][0])
         if p_size == 5**2:
             run_case(patterns[idx], filter_5)
         elif p_size == 13**2:

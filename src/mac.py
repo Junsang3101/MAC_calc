@@ -17,5 +17,6 @@ def mac(data: list[list[int]], filter: list[list[int]]):
         if data[r][c] * filter[r][c] != 0
     )
 
-    total_cells = data_rows * data_cols
-    return (matched / total_cells) * 100
+    #total_cells = data_rows * data_cols
+    #return (matched / total_cells) * 100
+    return matched
