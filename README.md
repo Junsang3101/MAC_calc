@@ -65,3 +65,10 @@ matrix = [[0 for c in cols] for r in rows]
 - [x] [정규화 구현](./src/judge.py): `normalize`함수로 구현 *X, Cross 이외 정규화 불가
 - [x] [MAC 연산 구현](./src/mac.py)
 - [x] [점수 비교 정책](./src/judge.py): `compar` -> 두 `float` 값을 `epsilon` 이하의 오차를 `True`로 처리함
+
+## 7. 리포트
+
+**실행 흐름**:
+- 모드 1: 정수 (0, 1) 3개를 한 줄로 행렬 3개 입력 받기 -> 행렬 1,3 과 2,3 mac연산 후 결과 출력
+- 모드 2: `data.json`파일을 읽어옴 -> 필터와 패턴을 읽어옴 -> 패턴과 필터를 정규화  
+-> 패턴의 크기에 대응하는 필터가 있다면 mac 연산/출력 -> 최종 결과 출력

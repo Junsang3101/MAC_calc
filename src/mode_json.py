@@ -77,8 +77,16 @@ def mode_json(path: Path | str = None):
     result = {
         "succ_c": 0,
         "fail_c": 0,
-        "Fail": []
+        "Fails": []
     }
+
+    '''
+    # Fails 요소
+    {
+        "index": null, #int
+        "reason": null  #str
+    }
+    '''
 
     print()
     for idx in range(len(patterns)):
@@ -93,7 +101,7 @@ def mode_json(path: Path | str = None):
         elif p_size == 25**2:
             run_case(patterns[idx], filter_25)
         else:
-            result["Fail"] += {
+            result["Fails"] += {
                 "index": idx,
                 "reason": "SizeMismatch"
             }
