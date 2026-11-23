@@ -61,7 +61,7 @@ matrix = [[0 for c in cols] for r in rows]
 # matrix[r][c] 로 해당 요소에 접근 가능
 ```
 - [x] [모드 1 입력 처리(3x3)](./src/mode_input.py)
-- [x] [모드 2 JSON 로드 및 스키마 검증](./src/mode_json.py): *결합도 높게 하드 코딩되었음
+- [x] [모드 2 JSON 로드 및 스키마 검증](./src/mode_json.py): *하드 코딩되었음
 - [x] [정규화 구현](./src/judge.py): `normalize_label`로 구현하였고 키와 값(문자열이라면)을 맨 앞글자만 대문자로 통일
 - [x] [MAC 연산 구현](./src/mac.py)
 - [x] [점수 비교 정책](./src/judge.py): `compar` -> 두 `float` 값을 `epsilon` 이하의 오차를 `True`로 처리함
