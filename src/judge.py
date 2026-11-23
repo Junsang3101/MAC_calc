@@ -7,7 +7,7 @@ EPSILON = 1e-9
 def compar(A: float | int, B: float | int, epsilon: float = EPSILON):
     return abs(float(A) - float(B)) < epsilon
 
-def normalize_label(raw: dict, map: dict):
+def normalize_label(raw: dict):
     result = {}
     for key, value in raw.items():
         base_key = str(key).strip().lower()
