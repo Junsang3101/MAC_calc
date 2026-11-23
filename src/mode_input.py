@@ -33,13 +33,13 @@ def input_matrix(rows, colums, min_val, max_val):
     return matrix
 
 def mode_input():
-    print("\n== 필터 A ==\n")
+    print("== 필터 A ==")
     filter_A = input_matrix(3, 3, 0, 1)
     if filter_A is None: return
-    print("\n== 필터 B ==\n")
+    print("== 필터 B ==")
     filter_B = input_matrix(3, 3, 0, 1)
     if filter_A is None: return
-    print("\n=== 패턴 ===\n")
+    print("=== 패턴 ===")
     pattern = input_matrix(3, 3, 0, 1)
     if filter_A is None: return
     
@@ -47,13 +47,14 @@ def mode_input():
     compar_B = mac(filter_B, pattern)
     same = compar(compar_A, compar_B)
 
+    print("== 결과 ==")
     if same:
-        print(f"\nA mac점수: {compar_A}\n일치도: {compar_A / (3**2) *100}%\nB mac 점수: {compar_B}\n일치도: {compar_B / (3**2) *100}%\n결과: 판정불가\n")
+        print(f"A mac점수: {compar_A}\nB mac 점수: {compar_B}\n결과: 판정불가(UNDECIDED)")
         print(f"성능 분석(3x3): {get_perf(pattern, filter_A)*1000}ms")
     elif compar_A > compar_B:
-        print(f"\nA mac점수: {compar_A}\n일치도: {compar_A / (3**2) *100}%\nB mac 점수: {compar_B}\n일치도: {compar_B / (3**2) *100}%\n결과: A\n")
+        print(f"\nA mac점수: {compar_A}\nB mac 점수: {compar_B}\n결과: A")
         print(f"성능 분석(3x3): {get_perf(pattern, filter_B)*1000}ms")
     elif compar_A < compar_B:
-        print(f"\nA mac점수: {compar_A}\n일치도: {compar_A / (3**2) *100}%\nB mac 점수: {compar_B}\n일치도: {compar_B / (3**2) *100}%\n껼과: B\n")
+        print(f"\nA mac점수: {compar_A}\nB mac 점수: {compar_B}\n껼과: B")
         print(f"성능 분석: {get_perf(pattern, filter_A)*1000}ms")
         print(f"연산 횟수: {3**2}")

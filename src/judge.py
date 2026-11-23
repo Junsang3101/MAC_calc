@@ -32,7 +32,8 @@ def judge(filter, pattern: list[list[int]]) -> dict:
     result = {
         "Cross": a,
         "X": b,
-        "perf": perf
+        "perf": perf,
+        "size": len(pattern["input"])
     }
 
     #print(result)

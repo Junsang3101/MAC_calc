@@ -16,23 +16,22 @@ def run_case(pattern, filter):
     temp = judge(filter, pattern)
     same = compar(temp["Cross"], temp["X"])
     compute = len(pattern["input"]) ** 2
-    print("\n== 개별 테스트 결과 ==\n")
+    print(f"Cross 점수: {temp['Cross']}\nX 점수: {temp['X']}")
     if same:
-        print(f"Cross: {temp['Cross']}\nX: {temp['X']}")
-        print(f"Cross 와 X의 일치도가 사실상 동일합니다.")
+        print(f"결과: 판정불가(UNDECIDED)")
         print(f"계산 시간: {temp['perf']* 1000}ms")
         print(f"연산 횟수 {compute}")
+        return "UNDECIDED"
     elif temp["Cross"] > temp["X"]:
-        print(f"Cross: {temp['Cross']}\nX: {temp['X']}")
-        print(f"검사 결과: Cross")
+        print(f"결과: Cross")
         print(f"계산 시간: {temp['perf']* 1000}ms")
         print(f"연산 횟수 {compute}")
+        return "PASS"
     elif temp["Cross"] < temp["X"]:
-        print(f"Cross: {temp['Cross']}\nX: {temp['X']}")
-        print(f"검사 결과: X")
+        print(f"결과: X")
         print(f"계산 시간: {temp['perf']* 1000}ms")
         print(f"연산 횟수 {compute}")
-    print("\n======================\n")
+        return "PASS"
 
 def mode_json(path: Path | str = None):
     if path is not None:
@@ -88,33 +87,59 @@ def mode_json(path: Path | str = None):
     }
     '''
 
-    print()
     for idx in range(len(patterns)):
         # 필터 크기에 해당하는 패턴이 맞는가
-        print(f"{len(patterns[idx]['input'])} x {len(patterns[idx]['input'][0])} 크기의 패턴 검사")
+        print(f"== {len(patterns[idx]['input'])} x {len(patterns[idx]['input'][0])} ==")
 
+        temp = None
         p_size = len(patterns[idx]['input']) * len(patterns[idx]['input'][0])
         if p_size == 5**2:
-            run_case(patterns[idx], filter_5)
+            temp = run_case(patterns[idx], filter_5)
+            if not temp == "PASS":
+                result["Fails"].append({
+                    "index": idx,
+                    "reason": temp
+                })
+                result["fail_c"] += 1
+            else:
+                result["succ_c"] += 1
         elif p_size == 13**2:
-            run_case(patterns[idx], filter_13)
+            temp = run_case(patterns[idx], filter_13)
+            if not temp == "PASS":
+                result["Fails"].append({
+                    "index": idx,
+                    "reason": temp
+                })
+                result["fail_c"] += 1
+            else:
+                result["succ_c"] += 1
         elif p_size == 25**2:
-            run_case(patterns[idx], filter_25)
+            temp = run_case(patterns[idx], filter_25)
+            if not temp == "PASS":
+                result["Fails"].append({
+                    "index": idx,
+                    "reason": temp
+                })
+                result["fail_c"] += 1
+            else:
+                result["succ_c"] += 1
         else:
-            result["Fails"] += {
+            result["Fails"].append({
                 "index": idx,
                 "reason": "SizeMismatch"
-            }
+            })
             print(f"{p_size}")
             print(f"{idx+1}번 패턴 작업 실패. (SizeMismatch)")
             result["fail_c"] += 1
             continue
-        result["succ_c"] += 1
 
-    print(f"== 종합 결과 ==")
+    print(f"\n== 종합 결과 ==")
     print(f"총 테스트 수: {result['succ_c'] + result['fail_c']}")
     print(f"성공: {result['succ_c']}")
     print(f"실패: {result['fail_c']}")
-    print(f"실패 사유:")
-    for reason in result["Fail"]:
-        print("test", reason)
+
+    if len(result["Fails"]):
+        print(f"\n== 실패 내역 ==\n")    
+        for i in range(len(result["Fails"])):
+            print(f"== {result['Fails'][i]['index']}번 ==")
+            print(f"이유: {result['Fails'][i]['reason']}")
