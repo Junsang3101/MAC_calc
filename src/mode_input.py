@@ -55,6 +55,6 @@ def mode_input():
         print(f"\nA mac점수: {compar_A}\nB mac 점수: {compar_B}\n결과: A")
         print(f"성능 분석(3x3): {get_perf(pattern, filter_B)*1000}ms")
     elif compar_A < compar_B:
-        print(f"\nA mac점수: {compar_A}\nB mac 점수: {compar_B}\n껼과: B")
+        print(f"\nA mac점수: {compar_A}\nB mac 점수: {compar_B}\n결과: B")
         print(f"성능 분석: {get_perf(pattern, filter_A)*1000}ms")
         print(f"연산 횟수: {3**2}")
