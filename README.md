@@ -19,8 +19,7 @@ Python 3.12.10
 - 3. 행렬의 크기에 따른 연산 시간과 연산 횟수 구하기
 
 ## 3. 파일 구조
-디스코드의 '미션3_MiniNPUSimulator.pdf' 를 보고 작업하며 모듈을 나눴으나  
-결합도가 매우 높게 구현되었습니다.
+디스코드의 '미션3_MiniNPUSimulator.pdf' 를 보고 작업하며 모듈을 나눠봤습니다.
 
 ``` text
 mac_calc
@@ -61,7 +60,7 @@ matrix = [[0 for c in cols] for r in rows]
 # matrix[r][c] 로 해당 요소에 접근 가능
 ```
 - [x] [모드 1 입력 처리(3x3)](./src/mode_input.py)
-- [x] [모드 2 JSON 로드 및 스키마 검증](./src/mode_json.py): *하드 코딩되었음
+- [x] [모드 2 JSON 로드 및 스키마 검증](./src/mode_json.py)
 - [x] [정규화 구현](./src/judge.py): `normalize_label`로 구현하였고 키와 값(문자열이라면)을 맨 앞글자만 대문자로 통일
 - [x] [MAC 연산 구현](./src/mac.py)
 - [x] [점수 비교 정책](./src/judge.py): `compar` -> 두 `float` 값을 `epsilon` 이하의 오차를 `True`로 처리함
@@ -73,7 +72,9 @@ matrix = [[0 for c in cols] for r in rows]
 - 모드 2: `data.json`파일을 읽어옴 -> 필터와 패턴을 읽어옴 -> 패턴과 필터를 정규화  
 -> 패턴의 크기에 대응하는 필터가 있다면 mac 연산/출력 -> 최종 결과 출력  
 
-**정규화**:
+**정규화**:  
+읽어온 `data.json`에서 키와 값(문자열이라면) 모두 소문자로 변환한 후 맨 앞글자만 대문자로 바꾼다.  
+'+' 라면 "Cross"로 변환 처리도 해준다.
 
 **입력(n) 에 따른 시간 복잡도**:
 시간 복잡도는 입력 n에 따라 늘어나는 연산량의 증가 추세로  
