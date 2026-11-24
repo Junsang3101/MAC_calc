@@ -12,11 +12,16 @@ def normalize_label(raw: dict):
     for key, value in raw.items():
         base_key = str(key).strip().lower()
         final_key = base_key[:1].upper() + base_key[1:]
+        if base_key == "+":
+            base_key = "Cross"
 
         base_value = value
         final_value = base_value
         if isinstance(base_value, str):
-            final_value = base_value[:1].upper() + base_value[1:]
+            if base_value == "+":
+                base_value = "Cross"
+            else:    
+                final_value = base_value[:1].upper() + base_value[1:]
         result[final_key]=final_value
 
     return result

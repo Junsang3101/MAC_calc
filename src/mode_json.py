@@ -65,12 +65,12 @@ def mode_json(path: Path | str = None):
         'cross': 'Cross'
     }
 
-    filter_5 = normalize_label(filter_5, normalize_map)
-    filter_13 = normalize_label(filter_13, normalize_map)
-    filter_25 = normalize_label(filter_25, normalize_map)
+    filter_5 = normalize_label(filter_5)
+    filter_13 = normalize_label(filter_13)
+    filter_25 = normalize_label(filter_25)
     print("필터를 성공적으로 정규화했습니다.")
     for idx in range(len(patterns)):
-        patterns[idx] = normalize_label(patterns[idx], normalize_map)
+        patterns[idx] = normalize_label(patterns[idx])
     print("패턴을 성공적으로 정규화했습니다.")
 
     result = {
